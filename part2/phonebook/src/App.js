@@ -24,8 +24,6 @@ const App = () => {
 
   useEffect(hook, []);
 
-
-
   const addName = (event) => {
     event.preventDefault();
     const validateName = persons.map((el) => el.name);
@@ -34,6 +32,14 @@ const App = () => {
       name: newName,
       number: newNumber
     }
+
+    if (newPerson.name.length < 4 || newPerson.number === '') {
+      setNewMessage(null);
+      setNewError('you must add a valid name and number');
+      return setTimeout(() => {
+        setNewError(null)
+      }, 4000);
+    }
     
     if (!validateName.includes(newName)) {
       // setPersons(persons.concat(newPerson));
@@ -41,6 +47,13 @@ const App = () => {
         .createPerson(newPerson)
         .then(personToAdd => {
           setPersons(persons.concat(personToAdd));
+        })
+        .catch(error => {
+          setNewMessage(null);
+          setNewError(error.response.data.error);
+          setTimeout(() => {
+            setNewError(null)
+          }, 4000)
         })
       
       setNewMessage(`Added ${newName}`);
@@ -54,9 +67,13 @@ const App = () => {
       personService
         .updateNumber(personId, newPerson).then(numberUpdated => {
           setPersons(persons.map(per => per.id === personId ? numberUpdated : per))
-        }).catch(error => 
-          setNewError(`Information of ${newName} has already been removed from server`)
-        )
+        }).catch(error => {
+          //setNewError(`Information of ${newName} is not valid!`);
+          setNewError(error.response.data.error);
+          setTimeout(() => {
+            setNewError(null)}, 4000)
+          setNewMessage(null);
+        })
       
         setNewMessage(`Changed ${newName}`);
         setTimeout(() => {
