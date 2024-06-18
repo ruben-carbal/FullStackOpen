@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im90cm91c3VhcmlvIiwiaWQiOiI2NjZjYmQ2YTMyOTM4OGZjM2NlM2VlM2MiLCJpYXQiOjE3MTg0MDI0MzR9.xJ8QLgKxAmvxcazKpIwOyjjYge82vR96joqQjRU75eQ
+
+{
+  "title": "There are still much more blogs to add",
+  "author": "Me",
+  "url": "http://ruben.dev",
+  "likes": 100
+}
