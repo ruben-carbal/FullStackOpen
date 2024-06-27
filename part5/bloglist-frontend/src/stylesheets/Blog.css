@@ -1,0 +1,18 @@
+.blogList {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 8px;
+}
+
+.remove {
+  background-color: #e75333;
+  border-radius: 5px;
+  border: none;
+  padding: 4px;
+  margin-top: 5px;
+}
+
+.remove:hover {
+  background-color: #e753b2;
+}
