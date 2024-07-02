@@ -17,7 +17,7 @@ export const Togglable = forwardRef(({ children }, refs) => {
   return(
     <div>
       <div style={hideWhenVisible}>
-        <button onClick={toggleVisibility}>new note</button>
+        <button onClick={toggleVisibility}>new blog</button>
       </div>
       <div style={showWhenVisible}>
         {children}

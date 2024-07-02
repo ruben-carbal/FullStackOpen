@@ -23,13 +23,13 @@ export const AddBlog = ({ createBlog }) => {
       <h2>create new</h2>
       <form onSubmit={addBlog}>
         <div>
-          title <input name="Title" value={title} onChange={(event) => {setTitle(event.target.value);}} />
+          title <input data-testid='title' name="Title" value={title} onChange={(event) => {setTitle(event.target.value);}} />
         </div>
         <div>
-          author <input name="Author" value={author} onChange={(event) => {setAuthor(event.target.value);}} />
+          author <input data-testid='author' name="Author" value={author} onChange={(event) => {setAuthor(event.target.value);}} />
         </div>
         <div>
-          url <input name="Url" value={url} onChange={(event) => {setUrl(event.target.value);} } />
+          url <input data-testid='url' name="Url" value={url} onChange={(event) => {setUrl(event.target.value);} } />
         </div>
         <button>create</button>
       </form>

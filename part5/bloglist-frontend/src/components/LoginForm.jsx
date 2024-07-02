@@ -5,13 +5,22 @@ export const LoginForm = ({ username, password, handlePasswordChange, handleUser
     <div onSubmit={handleSubmit}>
       <h1>log in to application</h1>
       <form>
-        <div>
-          username <input value={username} name="Username" onChange={handleUsernameChange} />
-        </div>
-        <div>
-          password <input type="password" value={password} name="Password" onChange={handlePasswordChange} />
-        </div>
-        <button>login</button>
+	<div>
+	  username <input 
+	  data-testid='username'
+	  value={username} 
+	  name="Username" 
+	  onChange={handleUsernameChange} />
+	</div>
+	<div>
+	  password 	  
+	  <input data-testid='password'
+	  type="password" 
+	  value={password} 
+	  name="Password" 
+	  onChange={handlePasswordChange} />
+	</div>
+	<button>login</button>
       </form>
     </div>
   );

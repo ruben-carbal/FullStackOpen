@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../stylesheets/Blog.css';
 
-const Blog = ({ blog, handleClick, handleDelete }) => {
+const Blog = ({ blog, handleClick, handleDelete, user }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const controlVisibility = { display: isVisible ? '' : 'none' };
@@ -9,6 +9,8 @@ const Blog = ({ blog, handleClick, handleDelete }) => {
   const setVisible = () => {
     setIsVisible(!isVisible);
   };
+
+  const handleRemoveVisible = { display: user.username === blog.user[0].username ? 'block' : 'none' };
 
   return(
     <div className="blogList">
@@ -18,9 +20,9 @@ const Blog = ({ blog, handleClick, handleDelete }) => {
       </div>
       <div style={controlVisibility} className='notVisible'>
         <div>{blog.url}</div>
-        <div>likes {blog.likes}<button onClick={handleClick}>like</button></div>
+        <div className='likes'>likes {blog.likes}<button onClick={handleClick}>like</button></div>
         <div>{blog.user[0].name}</div>
-        <button onClick={handleDelete} className="remove">remove</button>
+        <button style={handleRemoveVisible} onClick={handleDelete} className="remove">remove</button>
       </div>
     </div>
   );
