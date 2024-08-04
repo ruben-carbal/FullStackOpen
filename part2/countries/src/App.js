@@ -31,11 +31,11 @@ function App() {
   if (filteredCountries.length === 1) {
     setSelectedCountry(filteredCountries[0]);
     countriesToShow = filteredCountries;
-    setSearch('')
+    setSearch('');
   } else if (filteredCountries.length > 10) {
     countriesToShow = [];
   } else {
-    countriesToShow = filteredCountries
+    countriesToShow = filteredCountries;
   }
   
   // const countriesToShow = filteredCountries.length > 10 ? [] : filteredCountries;
@@ -51,7 +51,7 @@ function App() {
     } else {
       setMessage(null)
     }
-  }, [filteredCountries])
+  }, [filteredCountries]); 
   // const changeNotification = countriesToShow ? setMessage(null) : setMessage('Too many matches, specify another filter');
 
   return (

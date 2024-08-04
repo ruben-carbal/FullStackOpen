@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useField } from './hooks';
+
 import {
     BrowserRouter as Router,
     Routes,
@@ -70,18 +72,21 @@ const Footer = () => (
 )
 
 const CreateNew = (props) => {
-    const [content, setContent] = useState('');
-    const [author, setAuthor] = useState('');
-    const [info, setInfo] = useState('');
+    const content = useField('text');
+    const {reset: resetContent, ...spreadContent} = content;
+    const author = useField('text');
+    const {reset: resetAuthor, ...spreadAuthor} = author;
+    const info = useField('text');
+    const {reset: resetInfo, ...spreadInfo} = info;
     const navigate = useNavigate();
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         props.addNew({
-            content,
-            author,
-            info,
+            content: content.value,
+            author: author.value,
+            info: info.value,
             votes: 0
         });
         navigate('/');
@@ -93,17 +98,27 @@ const CreateNew = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input name='content' value={content} onChange={(e) => setContent(e.target.value)} />
+          <input {...spreadContent} />
         </div>
         <div>
           author
-          <input name='author' value={author} onChange={(e) => setAuthor(e.target.value)} />
+          <input {...spreadAuthor} />
         </div>
         <div>
           url for more info
-          <input name='info' value={info} onChange={(e)=> setInfo(e.target.value)} />
+          <input {...spreadInfo} /> 
         </div>
-        <button>create</button>
+        <button type='submit'>create</button>
+        <button 
+          type='reset'
+          onClick={() => {
+            resetContent();
+            resetAuthor();
+            resetInfo();
+          }}
+        >
+          clear
+        </button>
       </form>
     </div>
   )
